@@ -64,6 +64,7 @@ $wgAutoloadClasses['SpecialEditProfile'] = __DIR__ . '/UserProfile/includes/spec
 $wgAutoloadClasses['SpecialPopulateUserProfiles'] = __DIR__ . '/UserProfile/includes/specials/SpecialPopulateExistingUsersProfiles.php';
 $wgAutoloadClasses['SpecialToggleUserPage'] = __DIR__ . '/UserProfile/includes/specials/SpecialToggleUserPageType.php';
 $wgAutoloadClasses['SpecialUpdateProfile'] = __DIR__ . '/UserProfile/includes/specials/SpecialUpdateProfile.php';
+$wgAutoloadClasses['SpecialManageFields'] = __DIR__ . '/UserProfile/includes/specials/SpecialManageFields.php';
 $wgAutoloadClasses['SpecialUploadAvatar'] = __DIR__ . '/UserProfile/includes/specials/SpecialUploadAvatar.php';
 $wgAutoloadClasses['UploadAvatar'] = __DIR__ . '/UserProfile/includes/avatar/UploadAvatar.php';
 $wgAutoloadClasses['UploadAvatarFromUrl'] = __DIR__ . '/UserProfile/includes/avatar/UploadAvatarFromUrl.php';
@@ -103,7 +104,12 @@ $wgSpecialPages['PopulateUserProfiles'] = 'SpecialPopulateUserProfiles';
 $wgSpecialPages['RemoveAvatar'] = 'RemoveAvatar';
 $wgSpecialPages['ToggleUserPage'] = 'SpecialToggleUserPage';
 $wgSpecialPages['UpdateProfile'] = 'SpecialUpdateProfile';
+$wgSpecialPages['ManageFields'] = 'SpecialManageFields';
 $wgSpecialPages['UploadAvatar'] = 'SpecialUploadAvatar';
+
+// Permission to manage fields visibility site-wide
+$wgAvailableRights[] = 'manage-profiles-fields';
+$wgGroupPermissions['sysop']['manage-profiles-fields'] = true;
 
 // file backend to use defaults to FileSystem
 // this allows you to use e.g. swift.

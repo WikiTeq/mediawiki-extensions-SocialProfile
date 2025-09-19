@@ -647,7 +647,14 @@ class UserProfilePage extends Article {
 		$defaultCountry = wfMessage( 'user-profile-default-country' )->inContentLanguage()->text();
 
 		// Current location
-		$location = $profile_data['location_city'] . ', ' . $profile_data['location_state'];
+		$location = '';
+		if ( in_array( 'up_location_city', $this->profile_visible_fields ) ) {
+			$location .= $profile_data['location_city'];
+		}
+		$location .= ', ';
+		if ( in_array( 'up_location_state', $this->profile_visible_fields ) ) {
+			$location .= $profile_data['location_state'];
+		}
 		if ( $profile_data['location_country'] != $defaultCountry ) {
 			if ( $profile_data['location_city'] && $profile_data['location_state'] ) { // city AND state
 				$location = $profile_data['location_city'] . ', ' .
@@ -688,7 +695,14 @@ class UserProfilePage extends Article {
 		}
 
 		// Hometown
-		$hometown = $profile_data['hometown_city'] . ', ' . $profile_data['hometown_state'];
+		$hometown = '';
+		if ( in_array( 'up_hometown_city', $this->profile_visible_fields ) ) {
+			$hometown .= $profile_data['hometown_city'];
+		}
+		$hometown .= ', ';
+		if ( in_array( 'up_hometown_state', $this->profile_visible_fields ) ) {
+			$hometown .= $profile_data['hometown_state'];
+		}
 		if ( $profile_data['hometown_country'] != $defaultCountry ) {
 			if ( $profile_data['hometown_city'] && $profile_data['hometown_state'] ) { // city AND state
 				$hometown = $profile_data['hometown_city'] . ', ' .

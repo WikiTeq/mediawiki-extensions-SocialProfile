@@ -13,7 +13,7 @@ use MediaWiki\User\UserIdentity;
  * @license GPL-2.0-or-later
  */
 
-class SpecialUpdateProfile extends UnlistedSpecialPage {
+class SpecialUpdateProfile extends SpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'UpdateProfile' );

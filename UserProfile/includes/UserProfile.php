@@ -280,4 +280,93 @@ class UserProfile {
 
 		return $output;
 	}
+
+	/**
+	 * @return string[]
+	 */
+	public static function getDisabledFields() {
+		$dbr = wfGetDB( DB_REPLICA );
+		return $dbr->selectFieldValues(
+			'user_profile_fields_disabled',
+			'up_field_name'
+		);
+	}
+
+	/**
+	 * @param string $fieldName
+	 */
+	public static function disableField( $fieldName ) {
+		$dbw = wfGetDB( DB_MASTER );
+		if( !$dbw->selectRow(
+			'user_profile_fields_disabled',
+			'up_field_name',
+			['up_field_name' => $fieldName]
+		) ) {
+			$dbw->insert( 'user_profile_fields_disabled', [
+				'up_field_name' => $fieldName
+			] );
+		}
+	}
+
+	/**
+	 * @param string $fieldName
+	 */
+	public static function enableField( $fieldName ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete(
+			'user_profile_fields_disabled',
+			[
+				'up_field_name' => $fieldName
+			]
+		);
+	}
+
+	public static function resetDisabledFields() {
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete(
+			'user_profile_fields_disabled',
+			[
+				'up_field_name IS NOT NULL'
+			]
+		);
+	}
+
+	/**
+	 * Returns list of all db fields being used with their i18n messages linked
+	 * @return string[]
+	 */
+	public static function getFields() {
+		return [
+			'up_real_name' => 'user-personal-info-real-name',
+			'up_location_city' => 'user-personal-info-location-city',
+			'up_location_state' => 'user-personal-info-location-state',
+			'up_location_country' => 'user-personal-info-location-country',
+			'up_hometown_city' => 'user-personal-info-hometown-city',
+			'up_hometown_state' => 'user-personal-info-hometown-state',
+			'up_hometown_country' => 'user-personal-info-hometown-country',
+			'up_birthday' => 'user-personal-info-birthday',
+			//'up_relationship' => '',
+			'up_occupation' => 'user-personal-info-occupation',
+			//'up_companies' => '',
+			'up_about' => 'user-personal-info-about-me',
+			'up_places_lived' => 'user-personal-info-places-lived',
+			'up_schools' => 'user-personal-info-schools',
+			'up_websites' => 'user-personal-info-websites',
+			'up_movies' => 'other-info-movies',
+			'up_books' => 'other-info-books',
+			'up_magazines' => 'other-info-magazines',
+			'up_music' => 'other-info-music',
+			'up_tv' => 'other-info-tv',
+			'up_drinks' => 'other-info-drinks',
+			'up_snacks' => 'other-info-snacks',
+			'up_video_games' => 'other-info-video-games',
+			'up_interests' => 'user-profile-section-interests',
+			//'up_quotes' => '',
+			'up_custom_1' => 'custom-info-setting-field1',
+			'up_custom_2' => 'custom-info-setting-field2',
+			'up_custom_3' => 'custom-info-setting-field3',
+			'up_custom_4' => 'custom-info-setting-field4',
+			//'up_custom_5' => 'custom-info-field5'
+		];
+	}
 }

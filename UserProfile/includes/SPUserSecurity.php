@@ -151,7 +151,13 @@ class SPUserSecurity {
 		$profile = new UserProfile( $owner );
 		$fields = $profile->profile_fields;
 
+		$disabledFields = UserProfile::getDisabledFields();
+
 		foreach ( $fields as $field ) {
+			// Overrides field visibility based on UserProfile::getDisabledFields
+			if ( in_array( 'up_' . $field, $disabledFields ) ) {
+				continue;
+			}
 			if ( self::isFieldVisible( $owner, 'up_' . $field, $viewer ) ) {
 				$result[] = 'up_' . $field;
 			}
