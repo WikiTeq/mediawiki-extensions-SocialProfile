@@ -44,13 +44,14 @@ class SpecialManageFields extends SpecialPage {
 		$this->setHeaders();
 
 		if ( $request->wasPosted() && $user->matchEditToken( $request->getVal( 'wpEditToken' ) ) ) {
-			$fieldsToDisable = $this->getRequest()->getArray('fields', []);
+			$fieldsToDisable = array_keys( (array)$this->getRequest()->getArray( 'fields', [] ) );
+			// Only known profile fields may be disabled; ignore anything else
+			// submitted in the request
+			$knownFields = array_keys( UserProfile::getFields() );
+			$fieldsToDisable = array_intersect( $fieldsToDisable, $knownFields );
 			UserProfile::resetDisabledFields();
-			if( count( $fieldsToDisable ) ) {
-				$fieldsToDisable = array_keys( $fieldsToDisable );
-				foreach ( $fieldsToDisable as $fieldToDisable ) {
-					UserProfile::disableField( $fieldToDisable );
-				}
+			foreach ( $fieldsToDisable as $fieldToDisable ) {
+				UserProfile::disableField( $fieldToDisable );
 			}
 			$this->getOutput()->addWikiMsg( 'managefields-saved' );
 		}

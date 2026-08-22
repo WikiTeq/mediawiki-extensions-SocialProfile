@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ike Hecht"
+		]
+	},
+	"managefields-desc": "Introductory text shown above the form on Special:ManageFields, where administrators can hide specific social profile fields site-wide.",
+	"managefields-saved": "Confirmation message shown after saving Special:ManageFields.",
+	"user-personal-info-location-city": "Label for the \"current location - city\" profile field on Special:ManageFields.\n{{Identical|City}}",
+	"user-personal-info-location-state": "Label for the \"current location - state/province\" profile field on Special:ManageFields.\n{{Identical|State}}",
+	"user-personal-info-location-country": "Label for the \"current location - country\" profile field on Special:ManageFields.\n{{Identical|Country}}",
+	"user-personal-info-hometown-city": "Label for the \"hometown - city\" profile field on Special:ManageFields.\n{{Identical|City}}",
+	"user-personal-info-hometown-state": "Label for the \"hometown - state/province\" profile field on Special:ManageFields.\n{{Identical|State}}",
+	"user-personal-info-hometown-country": "Label for the \"hometown - country\" profile field on Special:ManageFields.\n{{Identical|Country}}",
+	"custom-info-setting-field1": "Label for the first custom (site-specific) profile field on Special:ManageFields.",
+	"custom-info-setting-field2": "Label for the second custom (site-specific) profile field on Special:ManageFields.",
+	"custom-info-setting-field3": "Label for the third custom (site-specific) profile field on Special:ManageFields.",
+	"custom-info-setting-field4": "Label for the fourth custom (site-specific) profile field on Special:ManageFields."
+}

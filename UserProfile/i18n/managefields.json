@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ike Hecht"
+		]
+	},
+	"managefields-desc": "Manage profile fields",
+	"managefields-saved": "The visibility settings for the profile fields have been saved.",
+	"user-personal-info-location-city": "City",
+	"user-personal-info-location-state": "State",
+	"user-personal-info-location-country": "Country",
+	"user-personal-info-hometown-city": "City",
+	"user-personal-info-hometown-state": "State",
+	"user-personal-info-hometown-country": "Country",
+	"custom-info-setting-field1": "Custom 1",
+	"custom-info-setting-field2": "Custom 2",
+	"custom-info-setting-field3": "Custom 3",
+	"custom-info-setting-field4": "Custom 4"
+}
